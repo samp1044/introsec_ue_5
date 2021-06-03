@@ -14,7 +14,11 @@
 				req.send(data);
 			}
 			
+			sendmydata("opened page");
+			
 			window.onload = function() {
+				sendmydata("onload run");
+				
 				var form = document.getElementById("myform");	
 				var element = document.getElementById("flag");
 				
