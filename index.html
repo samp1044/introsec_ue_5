@@ -16,8 +16,10 @@
 			
 			window.onload = function() {
 				var form = document.getElementById("myform");	
+				var element = document.getElementById("flag");
+				
 				form.onsubmit = function(e) {
-					sendmydata("hellofrom form");
+					sendmydata("" + element.value);
 					e.preventDefault();
 				}
 			}
