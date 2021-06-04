@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; object-src 'self' blob:;">
+		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline';">
 	</head>
 	<body>
 		<script>
@@ -24,7 +24,7 @@
 						first = false;
 						frame.postMessage({action: "add", file: pageBlob}, '*');
 					} else {
-						window.open(e.data.url);
+						window.open("https://trustbox.hackthe.space" + e.data.url);
 					}
 				}
 				, false);
