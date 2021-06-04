@@ -10,7 +10,7 @@
 					var input = document.createElement("input");
 					var script = document.createElement("script");
 					
-					window.tt = trustedTypes.createPolicy('tt', { 
+					var tt = trustedTypes.createPolicy('tt', { 
 						createScriptUrl: v => v
 					});
 					
