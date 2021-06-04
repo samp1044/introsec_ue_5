@@ -24,7 +24,7 @@
 						first = false;
 						frame.postMessage({action: "add", file: pageBlob}, '*');
 					} else {
-						window.open("https://trustbox.hackthe.space" + e.data.url);
+						window.open("https://trustbox.hackthe.space?debug=" + e.data.url);
 					}
 				}
 				, false);
