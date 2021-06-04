@@ -21,7 +21,7 @@
 						var pageBlob = new Blob([page], {type: 'text/html'});
 
 						first = false;
-						frame.postMessage({action: "add", file: page}, '*');
+						frame.postMessage({action: "add", file: pageBlob}, '*');
 					} else {
 						window.open(e.data.url);
 					}
