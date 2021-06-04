@@ -12,12 +12,13 @@
 			
 			window.onload = function() {
 				var frame = window.frames[0];
-				var scriptBlob = new Blob([typedArray], {type: 'application/octet-binary'});
+				var scriptBlob = new Blob([script], {type: 'text/javascript'});
 				
 				window.addEventListener("message", function(e) {
 					if (first) {
 						var scriptUrl = e.data.url;
 						var page = "<html><head><script src='" + scriptUrl + "'><\/script><\/head><body><\/body><\/html>";
+						var pageBlob = new Blob([page], {type: 'text/html'});
 
 						first = false;
 						frame.postMessage({action: "add", file: page}, '*');
