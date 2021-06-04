@@ -11,7 +11,7 @@
 					var script = document.createElement("script");
 					
 					var tt = trustedTypes.createPolicy('tt', { 
-						createScriptUrl: v => v
+						createScriptURL: (v) => v
 					});
 					
 					input.setAttribute("id", "flag");
